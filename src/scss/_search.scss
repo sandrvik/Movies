@@ -1,0 +1,28 @@
+.search {
+    @include flex-config(row, center, center);
+
+    &__input {
+        height: 48px;
+        width: 270px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border: 1px solid $base-color;
+        padding: 0 20px;
+
+        &::placeholder {
+            color: #5b6cebc1;
+        }
+    }
+
+    &__btn {
+        position: relative;
+        right: 5px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+
+        &:hover {
+            transform: none;
+            background-color: #4255e9;
+        }
+    }
+}

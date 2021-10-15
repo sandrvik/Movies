@@ -1,0 +1,52 @@
+.pagination {
+    @include flex-config(row, center, center);
+    text-align: center;
+    margin: 20px 0;
+    font-size: 20px;
+
+    & button {
+        border-radius: 100px;
+        color: white;
+        width: 35px;
+        height: 35px;
+        margin: 10px;
+        border: none;
+        background-color: $base-color;
+        cursor: pointer;
+    }
+
+    & #expandDropDown {
+        cursor: pointer;
+    }
+
+    & #lastPage {
+        cursor: pointer;
+    }
+
+    &__full {
+        @include flex-config(row, center, center);
+        width: fit-content;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        padding: 10px 0;
+        color: $base-color;
+        background-color: white;
+        border: 1px solid $base-color;
+        border-radius: 10px;
+        transform: scale(100%);
+        transition: all 0.5s;
+    }
+
+    &__full--hidden {
+        transform: scale(0);
+    }
+
+    &__page {
+        padding: 0 10px;
+        cursor: pointer;
+
+        &:hover {
+            font-weight: bold;
+        }
+    }
+}
