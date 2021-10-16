@@ -40,7 +40,6 @@ function createPagination(maxPage) {
     })
 
     createDropDown(maxPage);
-
 }
 
 function createDropDown(size) {

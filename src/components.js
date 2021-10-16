@@ -3,35 +3,24 @@ import { homeComp } from "./home.js";
 import { isLogedIn, showLoginForm } from "./login.js";
 import { searchComp } from "./search.js";
 
-const FavouritesComponent = {
-  render: () => {
-    if (isLogedIn()) {
-      favouritesComp();
-    } else {
-      showLoginForm();
-    }
+function render(fn) {
+  if (isLogedIn()) {
+    fn();
+  } else {
+    showLoginForm();
   }
+}
+
+const FavouritesComponent = {
+  render: () => render(favouritesComp)
 }
 
 const HomeComponent = {
-  render: () => {
-    if (isLogedIn()) {
-      homeComp();
-    } else {
-      showLoginForm();
-    }
-  }
+  render: () => render(homeComp)
 }
 
 const SearchComponent = {
-  render: () => {
-    if (isLogedIn()) {
-      searchComp();
-    } else {
-      showLoginForm();
-    }
-  }
+  render: () => render(searchComp)
 }
-
 
 export { FavouritesComponent, HomeComponent, SearchComponent }
