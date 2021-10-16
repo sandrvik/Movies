@@ -2,7 +2,7 @@
     Login imitation
 */
 
-import router from "./router.js";
+import { router } from "./router.js";
 
 const loginForm = document.getElementById('loginForm');
 const username = document.getElementById('name');

@@ -10,13 +10,21 @@ const findComponentByPath = (path, routes) => routes.find(r => r.path.match(new 
 
 const parseLocation = () => location.hash.slice(1).toLowerCase() || '/';
 
-const router = () => {
+export const router = () => {
     const path = parseLocation();
     const { component } = findComponentByPath(path, routes) || {};
     component.render();
 };
 
+export function handleCurrentLocation(locationHash, fn) {
+    return function () {
+        if (location.hash === locationHash) {
+            fn();
+        } else {
+            location.hash = locationHash;
+        }
+    }
+}
+
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
-
-export default router;
