@@ -1,10 +1,9 @@
 export const URL = 'https://api.tvmaze.com/';
 
-const pickKeysFromObject = (obj, ...keys) => Object.fromEntries(
-    keys
-        .filter(key => key in obj)
-        .map(key => [key, obj[key]])
-);
+const pickKeysFromObject = (obj, ...keys) => {
+    const pickedKeys = keys.filter(key => key in obj).map(key => [key, obj[key]]);
+    return Object.fromEntries(pickedKeys);
+}
 
 const pickMoviesKeys = (movies, arr) => {
     return movies.map(m => pickKeysFromObject(m.show || m._embedded?.show || m, ...arr));
@@ -21,4 +20,3 @@ export async function getMovies(url, count) {
         console.log('Error:', error);
     }
 }
-
