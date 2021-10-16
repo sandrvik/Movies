@@ -42,7 +42,7 @@ export async function searchComp() {
     }
 }
 
-searchButton.addEventListener('click', async (e) => {
+searchButton.addEventListener('click', (e) => {
     if (location.hash === '#/search') {
         searchComp();
     } else {

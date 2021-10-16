@@ -5,7 +5,7 @@ const moviesContainer = document.getElementById('movies');
 
 export function spawnMovies(moviesData) {
     movies.innerHTML = '';
-    if (moviesData.length === 0) {
+    if (moviesData.length === 0 || moviesData.size === 0) {
         const notFoundedMessage = document.createElement('h2');
         notFoundedMessage.innerText = 'Films not found';
         movies.append(notFoundedMessage);
