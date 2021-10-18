@@ -1,4 +1,4 @@
-import { FavouritesComponent, HomeComponent, SearchComponent } from './components.js'
+import { FavouritesComponent, HomeComponent, SearchComponent } from './components.js';
 
 const routes = [
     { path: '/', component: HomeComponent },

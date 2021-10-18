@@ -1,4 +1,4 @@
-import { homeComp } from "./home.js";
+import { homeComp } from "../Pages/home.js";
 
 const currentPage = document.getElementById('currentPage');
 const lastPage = document.getElementById('lastPage');

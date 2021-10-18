@@ -1,7 +1,7 @@
-import { favouritesComp } from "./favourites.js";
-import { homeComp } from "./home.js";
-import { isLogedIn, showLoginForm } from "./login.js";
-import { searchComp } from "./search.js";
+import { favouritesComp } from "../Pages/favourites.js";
+import { homeComp } from "../Pages/home.js";
+import { isLogedIn, showLoginForm } from "../Pages/login.js";
+import { searchComp } from "../Pages/search.js";
 
 function render(fn) {
   if (isLogedIn()) {

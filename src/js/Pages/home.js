@@ -1,7 +1,7 @@
-import { URL, getMovies } from "./fetch.js";
-import { spawnMovies } from "./spawn.js";
-import { language, genre } from "./filter.js";
-import { page } from "./pagination.js";
+import { URL, getMovies } from "../Controllers/fetch.js";
+import { spawnMovies } from "../Views/spawn.js";
+import { language, genre } from "../Models/filter.js";
+import { page } from "../Models/pagination.js";
 
 const header = document.getElementById('header');
 const main = document.getElementById('main');

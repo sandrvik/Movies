@@ -1,6 +1,6 @@
 import { showPopUp } from "./popup.js";
-import { favourites } from "./favourites.js";
-import { filter } from "./filter.js";
+import { favourites } from "../Pages/favourites.js";
+import { filter } from "../Models/filter.js";
 
 const moviesContainer = document.getElementById('movies');
 

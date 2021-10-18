@@ -1,8 +1,8 @@
-import { URL, getMovies } from "./fetch.js";
-import { spawnMovies } from "./spawn.js";
-import { language, genre } from "./filter.js";
+import { URL, getMovies } from "../Controllers/fetch.js";
+import { spawnMovies } from "../Views/spawn.js";
+import { language, genre } from "../Models/filter.js";
 import { homeComp } from "./home.js";
-import { handleCurrentLocation } from "./router.js";
+import { handleCurrentLocation } from "../Models/router.js";
 
 
 const search = document.getElementById('search');

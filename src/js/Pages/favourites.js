@@ -1,4 +1,4 @@
-import { spawnMovies } from "./spawn.js";
+import { spawnMovies } from "../Views/spawn.js";
 
 const header = document.getElementById('header');
 const main = document.getElementById('main');
