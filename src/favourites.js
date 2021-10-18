@@ -24,7 +24,11 @@ export function favouritesComp() {
     for (let filterElement of filterElements) {
         filterElement.disabled = true;
     }
-    spawnMovies(favourites);
+    spawnMovies(Array.from(favourites.values()), Infinity, false);
+}
+
+function updateLocalStorage(map, storage) {
+    localStorage.setItem(storage, JSON.stringify([...map]));
 }
 
 export function handleFavourites(className, favourites, storage) {
@@ -47,7 +51,3 @@ export function handleFavourites(className, favourites, storage) {
 
 const heartClick = handleFavourites('card__heart', favourites, 'favs');
 document.addEventListener('click', heartClick);
-
-function updateLocalStorage(map, storage) {
-    localStorage.setItem(storage, JSON.stringify([...map]));
-}

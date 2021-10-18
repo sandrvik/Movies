@@ -6,14 +6,11 @@ export function filter(movies) {
         'language': language.value,
         'genres': genre.value,
     }
-
     const filtersKeys = Object.keys(filters);
 
-    const filtered = movies.filter(movie => {
+    return movies.filter(movie => {
         return filtersKeys.every(key => {
             return !filters[key] || filters[key] === movie[key] || movie[key].includes(filters[key]);
         })
     })
-
-    return filtered;
 }

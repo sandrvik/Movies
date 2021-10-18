@@ -1,6 +1,6 @@
 import { URL, getMovies } from "./fetch.js";
 import { spawnMovies } from "./spawn.js";
-import { filter, language, genre } from "./filter.js";
+import { language, genre } from "./filter.js";
 import { homeComp } from "./home.js";
 import { handleCurrentLocation } from "./router.js";
 
@@ -13,15 +13,13 @@ const searchButton = document.getElementById('searchButton');
 const favouritesHeader = document.getElementById('favouritesHeader');
 
 let movies;
-let filtered;
 
 export async function searchComp() {
     if (!searchField.value) {
         homeComp();
     } else {
         movies = await getMovies(`${URL}search/shows?q=${searchField.value}`, 50);
-        filtered = filter(movies);
-        spawnMovies(filtered);
+        spawnMovies(movies, 10);
 
         paginationBlock.style.display = 'none';
         perPage.style.display = 'none';
@@ -33,22 +31,13 @@ export async function searchComp() {
             filterElement.disabled = false;
         }
 
-        language.addEventListener('change', () => {
-            filtered = filter(movies);
-            spawnMovies(filtered);
-        })
-
-        genre.addEventListener('change', () => {
-            filtered = filter(movies);
-            spawnMovies(filtered);
-        })
+        language.addEventListener('change', () => spawnMovies(movies, Infinity))
+        genre.addEventListener('change', () => spawnMovies(movies, Infinity))
     }
 }
 
-let handleSearchLocation = handleCurrentLocation('#/search', searchComp);
-
+const handleSearchLocation = handleCurrentLocation('#/search', searchComp);
 searchButton.addEventListener('click', handleSearchLocation);
-
 searchField.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
         handleSearchLocation();

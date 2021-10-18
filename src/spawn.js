@@ -1,16 +1,18 @@
 import { showPopUp } from "./popup.js";
 import { favourites } from "./favourites.js";
+import { filter } from "./filter.js";
 
 const moviesContainer = document.getElementById('movies');
 
-export function spawnMovies(moviesData) {
-    movies.innerHTML = '';
-    if (moviesData.length === 0 || moviesData.size === 0) {
+export function spawnMovies(moviesData, perPageValue, filtration = true) {
+    const filteredData = filtration ? filter(moviesData) : moviesData;
+    moviesContainer.innerHTML = '';
+    if (filteredData.length === 0) {
         const notFoundedMessage = document.createElement('h2');
         notFoundedMessage.innerText = 'Films not found';
-        movies.append(notFoundedMessage);
+        moviesContainer.append(notFoundedMessage);
     } else {
-        moviesData.forEach(movie => createMovieCard(movie));
+        filteredData.slice(0, perPageValue).forEach(movie => createMovieCard(movie));
     }
 }
 

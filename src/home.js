@@ -1,6 +1,6 @@
 import { URL, getMovies } from "./fetch.js";
 import { spawnMovies } from "./spawn.js";
-import { filter, language, genre } from "./filter.js";
+import { language, genre } from "./filter.js";
 import { page } from "./pagination.js";
 
 const header = document.getElementById('header');
@@ -12,11 +12,6 @@ const search = document.getElementById('search');
 const favouritesHeader = document.getElementById('favouritesHeader');
 
 let movies;
-let filtered;
-
-perPage.addEventListener('change', () => {
-    spawnMovies(filtered.slice(0, perPage.value));
-})
 
 export async function homeComp() {
     location.hash = '#/';
@@ -24,8 +19,7 @@ export async function homeComp() {
     main.style.display = "block";
     loginForm.style.display = "none";
     movies = await getMovies(`${URL}shows?page=${page - 1}`, 50);
-    filtered = filter(movies);
-    spawnMovies(filtered.slice(0, perPage.value));
+    spawnMovies(movies, perPage.value);
 
     paginationBlock.style.display = 'block';
     perPage.style.display = 'inline';
@@ -37,14 +31,7 @@ export async function homeComp() {
         filterElement.disabled = false;
     }
 
-    language.addEventListener('change', () => {
-        filtered = filter(movies);
-        spawnMovies(filtered.slice(0, perPage.value));
-    })
-
-    genre.addEventListener('change', () => {
-        filtered = filter(movies);
-        spawnMovies(filtered.slice(0, perPage.value));
-    })
-
+    language.addEventListener('change', () => spawnMovies(movies, perPage.value))
+    genre.addEventListener('change', () => spawnMovies(movies, perPage.value))
+    perPage.addEventListener('change', () => spawnMovies(movies, perPage.value))
 }
